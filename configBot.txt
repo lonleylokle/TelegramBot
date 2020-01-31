@@ -1,0 +1,2 @@
+API_TOKEN = "1056107759:AAGiSawsnWAimhgMUFSTFq0kf9LKTz_yfWQ"
+API_URL = "https://telegg.ru/orig/bot"
