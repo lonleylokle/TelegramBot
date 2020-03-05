@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+        web:
+                build:
+                        context: ./docker/nginx
+                        dockerfile: Dockerfile
+                ports:
+                        - "443:443"
+                        - "6969"
+
+        
+        bot:
+                build:
+                        context: .
+                        dockerfile: ./docker/bot/Dockerfile
+

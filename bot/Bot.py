@@ -10,21 +10,21 @@ from aiogram.bot import api
 from aiogram.utils.json import json
 from aiogram.utils.markdown import text
 
-from KassirBot.parserKassir import *
+from parserKassir import *
 
 PATCHED_URL = "https://telegg.ru/orig/bot{token}/{method}"
 setattr(api, 'API_URL', PATCHED_URL)
 
-API_TOKEN = "1056107759:AAGiSawsnWAimhgMUFSTFq0kf9LKTz_yfWQ"
+API_TOKEN = "1056107759:AAHNMiYoq29h2yuXG35ukslmxgPCViQmMo4"
 
 # webhook settings
-WEBHOOK_HOST = 'https://2afeafab.ngrok.io'
-WEBHOOK_PATH = ''
+WEBHOOK_HOST = '35.180.101.89'
+WEBHOOK_PATH = '/bot'
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
 # webserver settings
-WEBAPP_HOST = 'localhost'  # or ip
-WEBAPP_PORT = 5000
+WEBAPP_HOST = '127.0.0.1'  # or ip
+WEBAPP_PORT = 6969
 
 logging.basicConfig(level=logging.INFO)
 
