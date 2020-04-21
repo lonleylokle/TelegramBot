@@ -12,19 +12,20 @@ from aiogram.utils.markdown import text
 
 from parserKassir import *
 
-PATCHED_URL = "https://telegg.ru/orig/bot{token}/{method}"
-setattr(api, 'API_URL', PATCHED_URL)
-
 API_TOKEN = "1056107759:AAHNMiYoq29h2yuXG35ukslmxgPCViQmMo4"
-
+# PATCHED_URL = "https://telegg.ru/orig/bot{token}/{method}"
+# setattr(api, 'API_URL', PATCHED_URL)
 # webhook settings
-WEBHOOK_HOST = '35.180.101.89'
+WEBHOOK_HOST = '52.47.187.186'
 WEBHOOK_PATH = '/bot'
-WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
+WEBHOOK_URL = f"https://{WEBHOOK_HOST}{WEBHOOK_PATH}"
+
+WEBHOOK_SSL_CERT = "nginx.crt" # '/etc/nginx/ssl/nginx.crt'  # Path to the ssl certificate
+WEBHOOK_SSL_PRIV = "nginx.key" # '/etc/nginx/ssl/nginx.key'  # Path to the ssl private key
 
 # webserver settings
 WEBAPP_HOST = '127.0.0.1'  # or ip
-WEBAPP_PORT = 6969
+WEBAPP_PORT = 5000
 
 logging.basicConfig(level=logging.INFO)
 
@@ -185,7 +186,13 @@ async def press_back(user, message):
 
 
 async def on_startup(dp):
-    await bot.set_webhook(WEBHOOK_URL)
+    web_hook = await bot.get_webhook_info()
+    if web_hook.url != WEBHOOK_URL:
+        if not web_hook.url:
+            await bot.delete_webhook()
+        #await bot.set_webhook(WEBHOOK_URL)
+        await bot.set_webhook(WEBHOOK_URL, certificate=open(WEBHOOK_SSL_CERT, 'r'))
+    print(await bot.get_webhook_info())
     # insert code here to run it after start
 
 
