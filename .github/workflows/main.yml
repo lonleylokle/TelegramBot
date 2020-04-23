@@ -30,7 +30,7 @@ jobs:
         pip install --upgrade pip
         pip install pycodestyle
         pwd
-        /home/runner/.local/bin/pycodestyle /home/runner/bot
+        /home/runner/.local/bin/pycodestyle /home/runner/work/TelegramKassirBot/TelegramKassirBot
         
         
   docker-compose:
