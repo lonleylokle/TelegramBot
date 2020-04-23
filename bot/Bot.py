@@ -43,7 +43,7 @@ user_favorite = {}
 button_prev = InlineKeyboardButton("⬅", callback_data="button_prev")
 button_next = InlineKeyboardButton("➡", callback_data="button_next")
 button_details = InlineKeyboardButton("Подробнее",
-                                        callback_data="button_details")
+                                      callback_data="button_details")
 button_buy = InlineKeyboardButton("Купить", callback_data="button_buy")
 button_back = InlineKeyboardButton("Назад", callback_data="button_back")
 
