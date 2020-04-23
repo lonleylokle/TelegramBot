@@ -1,11 +1,9 @@
 import unittest
-
-from bot.Bot import *
-from bot.parserKassir import *
+from Bot import *
+from parserKassir import *
 
 
 class MyTestCase(unittest.TestCase):
-    def
     def test_send_product(self):
         self.assertIsNotNone(send_product(123))
 
@@ -24,16 +22,6 @@ class MyTestCase(unittest.TestCase):
                 "text": "test"}
         self.assertIsNotNone(search_product(test))
 
-    def test_help_message(self):
-        test = {"message_id": 2494,
-                "from": {"id": 221468810, "is_bot": "false", "first_name": "Тест", "username": "Test",
-                         "language_code": "en"},
-                "chat": {"id": 221468810, "first_name": "Тест", "username": "Test", "type": "private"},
-                "date": 1587588361,
-                "text": "test"}
-        self.assertIsNone(help_message(test))
-
 
 if __name__ == '__main__':
     unittest.main()
-
