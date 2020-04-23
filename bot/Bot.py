@@ -42,7 +42,7 @@ user_favorite = {}
 # Buttons
 button_prev = InlineKeyboardButton("⬅", callback_data="button_prev")
 button_next = InlineKeyboardButton("➡", callback_data="button_next")
-button_details = InlineKeyboardButton("Подробнее",\
+button_details = InlineKeyboardButton("Подробнее",
                                     callback_data="button_details")
 button_buy = InlineKeyboardButton("Купить", callback_data="button_buy")
 button_back = InlineKeyboardButton("Назад", callback_data="button_back")
@@ -105,7 +105,7 @@ async def echo(message: types.Message):
 # unknown message
 @dp.message_handler(content_types=ContentType.ANY)
 async def unknown_message(msg: types.Message):
-    message_text = text("Я не знаю, что с этим делать."\ 
+    message_text = text("Я не знаю, что с этим делать." 
                         "\nНапоминаю, что есть команда /help")
     await msg.reply(ContentType)
 
@@ -141,7 +141,7 @@ async def process_callback_next(callback_query: types.CallbackQuery):
 
 
 @dp.errors_handler(exception=exceptions.BadRequest)
-async def tg_bot_api_error(update: types. Update,\
+async def tg_bot_api_error(update: types. Update,
                             error: exceptions.BadRequest):
     print('telegram error', error, update.as_json())
     return True
@@ -157,14 +157,14 @@ async def press_next(user, message):
     if users_pages[user.id] + 1 < len(users_data[user.id]):
         users_pages[user.id] += 1
         await send_product(user.id)
-        await bot.delete_message(chat_id=user.id,\
+        await bot.delete_message(chat_id=user.id,
                                     message_id=message.message_id)
 
 
 async def press_prev(user, message):
     if users_pages[user.id] > 0:
         users_pages[user.id] -= 1
-        await bot.delete_message(chat_id=user.id,\
+        await bot.delete_message(chat_id=user.id,
                                     message_id=message.message_id)
         await send_product(user.id)
 
@@ -174,7 +174,7 @@ async def press_details(user, message):
     str2 = ''
     str2 = users_data[user.id][users_pages[user.id]][0]
     details = 'https://t.me/iv?url=' + str2 + '&rhash=1fded6a3c8b800'
-    await bot.send_message(chat_id=user.id, text=str2,\
+    await bot.send_message(chat_id=user.id, text=str2,
                         reply_markup=markup_details)
 
 
@@ -192,7 +192,7 @@ async def on_startup(dp):
         if not web_hook.url:
             await bot.delete_webhook()
         # await bot.set_webhook(WEBHOOK_URL)
-        await bot.set_webhook(WEBHOOK_URL,\
+        await bot.set_webhook(WEBHOOK_URL,
                             certificate=open(WEBHOOK_SSL_CERT, 'r'))
     print(await bot.get_webhook_info())
     # insert code here to run it after start

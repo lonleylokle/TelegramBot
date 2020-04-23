@@ -52,7 +52,7 @@ async def on_startup(dp):
         if not web_hook.url:
             await bot.delete_webhook()
         # await bot.set_webhook(WEBHOOK_URL)
-        await bot.set_webhook(WEBHOOK_URL, \
+        await bot.set_webhook(WEBHOOK_URL, 
                                 certificate=open(WEBHOOK_SSL_CERT, 'r'))
     print(await bot.get_webhook_info())
     # insert code here to run it after start
