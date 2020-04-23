@@ -2,7 +2,8 @@ import logging
 import traceback
 
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ContentType
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup,\
+                                                ContentType
 from aiogram.utils import exceptions
 from aiogram.utils.executor import start_webhook
 from aiogram import Bot, Dispatcher, types
@@ -11,9 +12,9 @@ from aiogram.utils.json import json
 from aiogram.utils.markdown import text
 
 
-API_TOKEN = "1056107759:AAHNMiYoq29h2yuXG35ukslmxgPCViQmMo4"
-PATCHED_URL = "https://telegg.ru/orig/bot{token}/{method}"
-#setattr(api, 'API_URL', PATCHED_URL)
+# API_TOKEN = "1056107759:AAHNMiYoq29h2yuXG35ukslmxgPCViQmMo4"
+# PATCHED_URL = "https://telegg.ru/orig/bot{token}/{method}"
+# setattr(api, 'API_URL', PATCHED_URL)
 
 # webhook settings
 WEBHOOK_HOST = 'https://52.47.187.186'
@@ -50,8 +51,9 @@ async def on_startup(dp):
     if web_hook.url != WEBHOOK_URL:
         if not web_hook.url:
             await bot.delete_webhook()
-        #await bot.set_webhook(WEBHOOK_URL)
-        await bot.set_webhook(WEBHOOK_URL, certificate=open(WEBHOOK_SSL_CERT, 'r'))
+        # await bot.set_webhook(WEBHOOK_URL)
+        await bot.set_webhook(WEBHOOK_URL,\
+                            certificate=open(WEBHOOK_SSL_CERT, 'r'))
     print(await bot.get_webhook_info())
     # insert code here to run it after start
 

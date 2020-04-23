@@ -15,9 +15,11 @@ class MyTestCase(unittest.TestCase):
 
     def test_search_product(self):
         test = {"message_id": 2494,
-                "from": {"id": 221468810, "is_bot": "false", "first_name": "Тест", "username": "Test",
+                "from": {"id": 221468810, "is_bot": "false",\
+                        "first_name": "Тест", "username": "Test",
                          "language_code": "en"},
-                "chat": {"id": 221468810, "first_name": "Тест", "username": "Test", "type": "private"},
+                "chat": {"id": 221468810, "first_name": "Тест",\
+                        "username": "Test", "type": "private"},
                 "date": 1587588361,
                 "text": "test"}
         self.assertIsNotNone(search_product(test))

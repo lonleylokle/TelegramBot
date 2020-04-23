@@ -2,7 +2,8 @@ import logging
 import traceback
 
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ContentType
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup,\
+                                                ContentType
 from aiogram.utils import exceptions
 from aiogram.utils.executor import start_webhook
 from aiogram import Bot, Dispatcher, types
@@ -13,15 +14,16 @@ from aiogram.utils.markdown import text
 from parserKassir import *
 
 API_TOKEN = "1056107759:AAHNMiYoq29h2yuXG35ukslmxgPCViQmMo4"
-# PATCHED_URL = "https://telegg.ru/orig/bot{token}/{method}"
-# setattr(api, 'API_URL', PATCHED_URL)
+
 # webhook settings
 WEBHOOK_HOST = '52.47.187.186'
 WEBHOOK_PATH = '/bot'
 WEBHOOK_URL = f"https://{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
-WEBHOOK_SSL_CERT = "nginx.crt" # '/etc/nginx/ssl/nginx.crt'  # Path to the ssl certificate
-WEBHOOK_SSL_PRIV = "nginx.key" # '/etc/nginx/ssl/nginx.key'  # Path to the ssl private key
+# Path to the ssl certificate
+WEBHOOK_SSL_CERT = "nginx.crt"  # '/etc/nginx/ssl/nginx.crt'
+# Path to the ssl private key
+WEBHOOK_SSL_PRIV = "nginx.key"  # '/etc/nginx/ssl/nginx.key'
 
 # webserver settings
 WEBAPP_HOST = '127.0.0.1'  # or ip
@@ -40,7 +42,8 @@ user_favorite = {}
 # Buttons
 button_prev = InlineKeyboardButton("⬅", callback_data="button_prev")
 button_next = InlineKeyboardButton("➡", callback_data="button_next")
-button_details = InlineKeyboardButton("Подробнее", callback_data="button_details")
+button_details = InlineKeyboardButton("Подробнее",\
+                                    callback_data="button_details")
 button_buy = InlineKeyboardButton("Купить", callback_data="button_buy")
 button_back = InlineKeyboardButton("Назад", callback_data="button_back")
 
@@ -102,7 +105,8 @@ async def echo(message: types.Message):
 # unknown message
 @dp.message_handler(content_types=ContentType.ANY)
 async def unknown_message(msg: types.Message):
-    message_text = text("Я не знаю, что с этим делать.\nНапоминаю, что есть команда /help")
+    message_text = text("Я не знаю, что с этим делать.\ 
+                        \nНапоминаю, что есть команда /help")
     await msg.reply(ContentType)
 
 
@@ -174,7 +178,8 @@ async def press_details(user, message):
     str2 = ''
     str2 = users_data[user.id][users_pages[user.id]][0]
     details = 'https://t.me/iv?url=' + str2 + '&rhash=1fded6a3c8b800'
-    await bot.send_message(chat_id=user.id, text=str2, reply_markup=markup_details)
+    await bot.send_message(chat_id=user.id, text=str2,\
+                        reply_markup=markup_details)
 
 
 async def press_buy(user, message):
@@ -191,7 +196,8 @@ async def on_startup(dp):
         if not web_hook.url:
             await bot.delete_webhook()
         #await bot.set_webhook(WEBHOOK_URL)
-        await bot.set_webhook(WEBHOOK_URL, certificate=open(WEBHOOK_SSL_CERT, 'r'))
+        await bot.set_webhook(WEBHOOK_URL,\
+                            certificate=open(WEBHOOK_SSL_CERT, 'r'))
     print(await bot.get_webhook_info())
     # insert code here to run it after start
 
