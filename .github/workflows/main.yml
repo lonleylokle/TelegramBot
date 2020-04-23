@@ -29,7 +29,8 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install pycodestyle
-        ls -la
+        pwd
+        /home/runner/.local/bin/pycodestyle /home/runner/bot
         
         
   docker-compose:
