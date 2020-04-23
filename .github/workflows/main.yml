@@ -20,13 +20,17 @@ jobs:
         docker build -t unittest -f ./docker/tests/Dockerfile .
         docker run unittest
         
-  codestyle:
+  checkCodeStyle:
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v2
     - name: codestyle
-      run : ls
+      run : |
+        pip install --upgrade pip
+        pip install pycodestyle
+        pycodestyle /github/workspace/
+        
         
   docker-compose:
     runs-on: ubuntu-latest
