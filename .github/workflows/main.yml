@@ -30,7 +30,6 @@ jobs:
         pip install --upgrade pip
         pip install pycodestyle
         ls -la
-        pycodestyle ./bot/
         
         
   docker-compose:
