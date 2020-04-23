@@ -29,7 +29,7 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install pycodestyle
-        pycodestyle .
+        ls -la
         
         
   docker-compose:
