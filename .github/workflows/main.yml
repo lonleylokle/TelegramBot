@@ -29,7 +29,8 @@ jobs:
       uses: |
         pip install --upgrade pip
         pip install pycodestyle
-        pycodestyle /github/workspace
+        ls -la
+        pycodestyle ./github/workspace
         
         
   docker-compose:
