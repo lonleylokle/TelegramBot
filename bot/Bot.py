@@ -105,8 +105,8 @@ async def echo(message: types.Message):
 # unknown message
 @dp.message_handler(content_types=ContentType.ANY)
 async def unknown_message(msg: types.Message):
-    message_text = text("Я не знаю, что с этим делать.\ 
-                        \nНапоминаю, что есть команда /help")
+    message_text = text("Я не знаю, что с этим делать."\ 
+                        "\nНапоминаю, что есть команда /help")
     await msg.reply(ContentType)
 
 
@@ -141,7 +141,8 @@ async def process_callback_next(callback_query: types.CallbackQuery):
 
 
 @dp.errors_handler(exception=exceptions.BadRequest)
-async def tg_bot_api_error(update: types. Update, error: exceptions.BadRequest):
+async def tg_bot_api_error(update: types. Update,\
+                            error: exceptions.BadRequest):
     print('telegram error', error, update.as_json())
     return True
 
@@ -152,24 +153,19 @@ async def timeout_error(update: types.Update, error):
     return True
 
 
-# @dp.errors_handler(exception=Exception)
-# async def general(update: types.Update, error):
-#     print(f'error [{error._class_}][{error._class_._name_}] update [{update}]')
-#     traceback.print_exc()
-#     return True
-
-
 async def press_next(user, message):
     if users_pages[user.id] + 1 < len(users_data[user.id]):
         users_pages[user.id] += 1
         await send_product(user.id)
-        await bot.delete_message(chat_id=user.id, message_id=message.message_id)
+        await bot.delete_message(chat_id=user.id,\
+                                    message_id=message.message_id)
 
 
 async def press_prev(user, message):
     if users_pages[user.id] > 0:
         users_pages[user.id] -= 1
-        await bot.delete_message(chat_id=user.id, message_id=message.message_id)
+        await bot.delete_message(chat_id=user.id,\
+                                    message_id=message.message_id)
         await send_product(user.id)
 
 
@@ -195,7 +191,7 @@ async def on_startup(dp):
     if web_hook.url != WEBHOOK_URL:
         if not web_hook.url:
             await bot.delete_webhook()
-        #await bot.set_webhook(WEBHOOK_URL)
+        # await bot.set_webhook(WEBHOOK_URL)
         await bot.set_webhook(WEBHOOK_URL,\
                             certificate=open(WEBHOOK_SSL_CERT, 'r'))
     print(await bot.get_webhook_info())
