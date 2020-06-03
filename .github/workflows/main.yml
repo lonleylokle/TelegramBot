@@ -41,4 +41,4 @@ jobs:
         docker-compose -p tgbot build
     - name: push image
       run : |
-        docker push tgbot
+        docker-compose push tgbot
