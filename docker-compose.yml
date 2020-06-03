@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+                web:
+                        network_mode: host
+                        build: ./docker/nginx
+                        ports:
+                                - "443:443"
+
+                bot:
+                        network_mode: host
+                        build:
+                                context: .
+                                dockerfile: ./docker/bot/Dockerfile
+                        ports: 
+                                - "5000:5000"
+
