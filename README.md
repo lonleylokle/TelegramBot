@@ -7,3 +7,4 @@
 [![Watch the video](https://i.imgur.com/fovTHLt.png)](https://drive.google.com/file/d/1-VJW-nxjdvlTA8zbgPguj3b_wAKewj6V/view?usp=sharing)
 
 ### Схема
+https://imgur.com/LVQGx76
