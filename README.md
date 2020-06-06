@@ -8,3 +8,4 @@
 
 ### Схема
 ![alt tag](https://imgur.com/LVQGx76)
+![alt tag](https://imgur.com/LVQGx76 "Описание будет тут")
