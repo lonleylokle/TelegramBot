@@ -45,17 +45,16 @@ jobs:
 #         docker push xhazker/nginx:0.1.0
           
   run:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 #     needs: [unittest, checkCodeStyle, docker-build]
     
     steps:
+      - uses: actions/checkout@v2
       - name: ssh connect
         env:
           SSH: ${{ secrets.SSH}}
         run: |
-          echo $SSH > key.pem
-          chmod 400 key.pem
-          ssh -y -i "key.pem" ubuntu@ec2-35-180-58-223.eu-west-3.compute.amazonaws.com
+          docker-compose up --build
           
           
           
