@@ -2,15 +2,18 @@ version: "3.7"
 services:
                 web:
                         network_mode: host
-                        build: ./docker/nginx
+                        #                        build: ./docker/nginx
+                        image: xhazker/telegram-bot:0.1.0
                         ports:
                                 - "443:443"
 
                 bot:
                         network_mode: host
-                        build:
-                                context: .
-                                dockerfile: ./docker/bot/Dockerfile
-                        ports: 
+                        #                        environment:
+                        #                                - API_TOKEN
+                        #                        build:
+                        #                                context: .
+                        #                                dockerfile: ./docker/bot/Dockerfile
+                        image: xhazker/nginx:0.1.0
+                        ports:
                                 - "5000:5000"
-
