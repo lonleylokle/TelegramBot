@@ -53,8 +53,8 @@ jobs:
         env:
           SSH: ${{ secrets.SSH}}
         run: |
-          ssh -y -i $SSH ubuntu@ec2-35-180-58-223.eu-west-3.compute.amazonaws.com
-#          echo $SSH > key.pem
+          echo "sdf" > key2.pem
+          echo $SSH > key.pem
 #          chmod 400 key.pem
 #          ssh -y -i "key.pem" ubuntu@ec2-35-180-58-223.eu-west-3.compute.amazonaws.com
           
