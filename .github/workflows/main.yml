@@ -54,9 +54,7 @@ jobs:
         env:
           SSH: ${{ secrets.SSH}}
         run: |
-          ls -la
-          docker --version
-#          docker-compose up --build
+          sudo docker-compose up --build -d
           
           
           
