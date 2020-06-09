@@ -55,7 +55,7 @@ jobs:
         run: |
           echo $SSH > key.pem
           chmod 400 key.pem
-#          ssh -y -i "key.pem" ubuntu@ec2-35-180-58-223.eu-west-3.compute.amazonaws.com
+          ssh -y -i "key.pem" ubuntu@ec2-35-180-58-223.eu-west-3.compute.amazonaws.com
           
           
           
