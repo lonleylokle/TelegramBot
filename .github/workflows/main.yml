@@ -43,6 +43,7 @@ jobs:
 #       run : |
 #         docker push xhazker/telegram-bot:0.1.0
 #         docker push xhazker/nginx:0.1.0
+#
           
   run:
     runs-on: self-hosted
