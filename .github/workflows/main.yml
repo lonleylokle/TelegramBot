@@ -5,50 +5,46 @@ on:
   pull_request:
 
 jobs:
-#  unittest:
-#     runs-on: ubuntu-latest
-    
-#     steps:
-#     - uses: actions/checkout@v2
-#     - name: unittest
-#       run : |
-#         docker build -t unittest -f ./docker/tests/Dockerfile .
-#         docker run unittest
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: unittest
+      run : |
+        docker build -t unittest -f ./docker/tests/Dockerfile .
+        docker run unittest
         
-#   checkCodeStyle:
-#     runs-on: ubuntu-latest
-    
-#     steps:
-#     - uses: actions/checkout@v2
-#     - name: Python Style Checker
-#       uses: andymckay/pycodestyle-action@0.1.3
+  checkCodeStyle:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Python Style Checker
+      uses: andymckay/pycodestyle-action@0.1.3
       
-#   docker-build:
-#     runs-on: ubuntu-latest
-#     needs: [unittest, checkCodeStyle]
-          
-#     steps:
-#     - uses: actions/checkout@v2
-#     - name: docker login
-#       env:
-#         DOCKER_USER: ${{ secrets.DOCKER_USER }}
-#         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-#       run: |
-#         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-#     - name: build docker-compose
-#       run : |
-#         docker build -f ./docker/bot/Dockerfile -t xhazker/telegram-bot:0.1.0 .
-#         docker build -f ./docker/bot/Dockerfile -t xhazker/nginx:0.1.0 .
-#     - name: push image
-#       run : |
-#         docker push xhazker/telegram-bot:0.1.0
-#         docker push xhazker/nginx:0.1.0
-#
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: [unittest, checkCodeStyle]
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: build docker-compose
+      run : |
+        docker build -f ./docker/bot/Dockerfile -t xhazker/telegram-bot:0.1.0 .
+        docker build -f ./docker/bot/Dockerfile -t xhazker/nginx:0.1.0 .
+    - name: push image
+      run : |
+        docker push xhazker/telegram-bot:0.1.0
+        docker push xhazker/nginx:0.1.0
+
           
   run:
     runs-on: self-hosted
-#     needs: [unittest, checkCodeStyle, docker-build]
-    
+    needs: [unittest, checkCodeStyle, docker-build]
     steps:
       - uses: actions/checkout@v2
       - name: ssh connect
