@@ -1,5 +1,5 @@
 FROM python:3.7.2
-COPY ./bot .
+COPY . .
 COPY ./docker/bot/nginx.crt .
 COPY ./docker/bot/nginx.key .
 RUN pip3 install --upgrade pip
