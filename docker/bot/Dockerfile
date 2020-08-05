@@ -8,5 +8,5 @@ RUN pip3 install aiogram
 RUN pip3 install requests
 RUN pip3 install bs4
 #RUN nohup python3 Bot.py
-CMD ["python3","Bot.py"]
+CMD ["python3","app.py"]
 # RUN pip install -r requirements.txt
