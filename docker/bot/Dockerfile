@@ -1,7 +1,7 @@
 FROM python:3.7.2
 COPY . .
-COPY ./docker/bot/nginx.crt .
-COPY ./docker/bot/nginx.key .
+COPY ./docker/nginx/nginx.crt .
+COPY ./docker/nginx/nginx.key .
 RUN pip3 install --upgrade pip
 RUN pip3 --version
 RUN pip3 install aiogram
